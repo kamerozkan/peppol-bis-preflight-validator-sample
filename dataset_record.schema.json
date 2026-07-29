@@ -46,6 +46,9 @@
     "validationScope": {
       "const": "OFFLINE_PREFLIGHT"
     },
+    "externalStateStatus": {
+      "const": "NOT_EVALUATED_EXTERNAL_STATE"
+    },
     "rulesetEffectiveAt": {
       "type": "string",
       "format": "date"
@@ -153,6 +156,7 @@
     "conformanceStatus",
     "previewConformanceStatus",
     "validationScope",
+    "externalStateStatus",
     "rulesetEffectiveAt",
     "sourceFormat",
     "validationFamily",

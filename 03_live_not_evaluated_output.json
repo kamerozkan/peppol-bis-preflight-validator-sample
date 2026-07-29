@@ -6,6 +6,7 @@
   "conformanceStatus": "NOT_EVALUATED",
   "previewConformanceStatus": "NOT_EVALUATED",
   "validationScope": "OFFLINE_PREFLIGHT",
+  "externalStateStatus": "NOT_EVALUATED_EXTERNAL_STATE",
   "rulesetEffectiveAt": "2026-02-23",
   "sourceFormat": "UNKNOWN",
   "validationFamily": "UNKNOWN",
@@ -28,7 +29,7 @@
       "name": "Peppol BIS Billing 3.0.21",
       "effectiveAt": "2026-08-17"
     },
-    "artifactManifestSha256": "2d149ca9eee33f59e0abaf7be2e5e584272c57f11c80978f2f018c46bf58c967"
+    "artifactManifestSha256": "ce0b34ba52412ea870785a58f316990d578d91717c3b1b396ed0f2e9f3fd5ef2"
   },
   "counts": {
     "fatal": 0,
@@ -49,7 +50,7 @@
   "sha256": null,
   "embeddedXmlSha256": null,
   "container": null,
-  "checkedAt": "2026-07-29T10:31:59.296862Z",
+  "checkedAt": "2026-07-29T11:52:37.783264Z",
   "reports": {},
   "error": {
     "code": "SOURCE_FETCH_FAILED",

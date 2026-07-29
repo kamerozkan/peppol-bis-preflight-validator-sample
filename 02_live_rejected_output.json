@@ -1,11 +1,12 @@
 {
   "inputIndex": 1,
-  "documentId": "malformed-invalid",
-  "fileName": "invalid.xml",
+  "documentId": "mutated-empty-invoice-id",
+  "fileName": "mutated-empty-invoice-id.xml",
   "processingStatus": "SUCCEEDED",
   "conformanceStatus": "REJECTED",
   "previewConformanceStatus": "REJECTED",
   "validationScope": "OFFLINE_PREFLIGHT",
+  "externalStateStatus": "NOT_EVALUATED_EXTERNAL_STATE",
   "rulesetEffectiveAt": "2026-02-23",
   "sourceFormat": "XML",
   "validationFamily": "PEPPOL_BIS_BILLING",
@@ -28,35 +29,16 @@
       "name": "Peppol BIS Billing 3.0.21",
       "effectiveAt": "2026-08-17"
     },
-    "artifactManifestSha256": "2d149ca9eee33f59e0abaf7be2e5e584272c57f11c80978f2f018c46bf58c967"
+    "artifactManifestSha256": "ce0b34ba52412ea870785a58f316990d578d91717c3b1b396ed0f2e9f3fd5ef2"
   },
   "counts": {
-    "fatal": 16,
-    "error": 1,
+    "fatal": 2,
+    "error": 0,
     "warning": 0,
     "information": 0
   },
   "findings": [
     {
-      "severity": "ERROR",
-      "stage": "XSD",
-      "ruleId": "SCHEMAV_ELEMENT_CONTENT",
-      "message": "Element '{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}ID': This element is not expected. Expected is one of ( {urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2}UBLExtensions, {urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2}UBLVersionID, {urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2}CustomizationID, {urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2}ProfileID, {urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2}ProfileExecutionID, {urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2}ID ).",
-      "location": "/*/*",
-      "ruleset": "UBL-2.1-XSD",
-      "line": 1,
-      "column": 0
-    },
-    {
-      "severity": "FATAL",
-      "stage": "BUSINESS_RULE",
-      "ruleId": "BR-01",
-      "message": "[BR-01]-An Invoice shall have a Specification identifier (BT-24).",
-      "location": "/*:Invoice[namespace-uri()='urn:oasis:names:specification:ubl:schema:xsd:Invoice-2'][1]",
-      "test": "normalize-space(cbc:CustomizationID) != ''",
-      "ruleset": "EN16931-1.3.15"
-    },
-    {
       "severity": "FATAL",
       "stage": "BUSINESS_RULE",
       "ruleId": "BR-02",
@@ -64,36 +46,26 @@
       "location": "/*:Invoice[namespace-uri()='urn:oasis:names:specification:ubl:schema:xsd:Invoice-2'][1]",
       "test": "normalize-space(cbc:ID) != ''",
       "ruleset": "EN16931-1.3.15"
+    },
+    {
+      "severity": "FATAL",
+      "stage": "BUSINESS_RULE",
+      "ruleId": "PEPPOL-EN16931-R008",
+      "message": "Document MUST not contain empty elements.",
+      "location": "/*:Invoice[namespace-uri()='urn:oasis:names:specification:ubl:schema:xsd:Invoice-2'][1]/*:ID[namespace-uri()='urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2'][1]",
+      "test": "false()",
+      "ruleset": "PEPPOL-BIS-3.0.20"
     }
   ],
-  "findingsTruncated": true,
+  "findingsTruncated": false,
   "previewCounts": {
-    "fatal": 16,
-    "error": 1,
+    "fatal": 2,
+    "error": 0,
     "warning": 0,
     "information": 0
   },
   "previewFindings": [
     {
-      "severity": "ERROR",
-      "stage": "XSD",
-      "ruleId": "SCHEMAV_ELEMENT_CONTENT",
-      "message": "Element '{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}ID': This element is not expected. Expected is one of ( {urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2}UBLExtensions, {urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2}UBLVersionID, {urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2}CustomizationID, {urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2}ProfileID, {urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2}ProfileExecutionID, {urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2}ID ).",
-      "location": "/*/*",
-      "ruleset": "UBL-2.1-XSD",
-      "line": 1,
-      "column": 0
-    },
-    {
-      "severity": "FATAL",
-      "stage": "BUSINESS_RULE",
-      "ruleId": "BR-01",
-      "message": "[BR-01]-An Invoice shall have a Specification identifier (BT-24).",
-      "location": "/*:Invoice[namespace-uri()='urn:oasis:names:specification:ubl:schema:xsd:Invoice-2'][1]",
-      "test": "normalize-space(cbc:CustomizationID) != ''",
-      "ruleset": "EN16931-1.3.16-PREVIEW"
-    },
-    {
       "severity": "FATAL",
       "stage": "BUSINESS_RULE",
       "ruleId": "BR-02",
@@ -101,13 +73,22 @@
       "location": "/*:Invoice[namespace-uri()='urn:oasis:names:specification:ubl:schema:xsd:Invoice-2'][1]",
       "test": "normalize-space(cbc:ID) != ''",
       "ruleset": "EN16931-1.3.16-PREVIEW"
+    },
+    {
+      "severity": "FATAL",
+      "stage": "BUSINESS_RULE",
+      "ruleId": "PEPPOL-EN16931-R008",
+      "message": "[PEPPOL-EN16931-R008]-Document MUST not contain empty elements.",
+      "location": "/*:Invoice[namespace-uri()='urn:oasis:names:specification:ubl:schema:xsd:Invoice-2'][1]/*:ID[namespace-uri()='urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2'][1]",
+      "test": "false()",
+      "ruleset": "PEPPOL-BIS-3.0.21-PREVIEW"
     }
   ],
-  "previewFindingsTruncated": true,
-  "sha256": "05ff26714881a6b4b30f4399b395ce33ee5fb7d635b7ad1a0d0a1ad54895caf6",
+  "previewFindingsTruncated": false,
+  "sha256": "96c9ed30f12c85489ca66091e8e045cf76cd284970c048b03ce6dd2ed753ba85",
   "embeddedXmlSha256": null,
   "container": null,
-  "checkedAt": "2026-07-29T10:31:59.229960Z",
+  "checkedAt": "2026-07-29T11:52:37.720171Z",
   "reports": {},
   "error": null
 }

@@ -23,7 +23,7 @@ Validate Peppol BIS Billing UBL invoices before network submission. One run retu
 | [`dataset_record.schema.json`](dataset_record.schema.json) | JSON Schema 2020-12 contract for one dataset row |
 | [`DATA_NOTICE.md`](DATA_NOTICE.md) | Provenance, privacy, and interpretation limits |
 
-All three JSON rows came from successful Actor run `fNx8cxIyntPOg1IDj`, build `0.0.1`, dataset `XlAJMsaT0VBsSHHxq`, on 2026-07-29. The run evaluated two documents and billed exactly two `invoice-validated` events. The `NOT_EVALUATED` source failure was not billed.
+All three JSON rows came from successful Actor run `Szb49L6dL3IkFBapm`, build `0.0.3` (`RSEHb1OfMZGbVGlsj`), dataset `HXEpY6XKMF7SiyYKw`, on 2026-07-29. The run evaluated two documents and billed exactly two `invoice-validated` events. The `NOT_EVALUATED` source failure was not billed.
 
 ## Stable decision contract
 
@@ -31,6 +31,7 @@ All three JSON rows came from successful Actor run `fNx8cxIyntPOg1IDj`, build `0
 - `REJECTED`: processing completed and at least one required active-rule failure was found.
 - `NOT_EVALUATED`: a source or engine failure prevented a technical decision.
 - `previewConformanceStatus`: the separate Peppol BIS Billing 3.0.21 decision.
+- `externalStateStatus`: participant, network, delivery, and recipient state remain outside offline preflight.
 - `versions.activeRuleset` and `versions.previewRuleset`: machine-readable rule identity and effective date.
 - `sha256`: digest of every document that was successfully loaded.
 
@@ -45,11 +46,12 @@ All three JSON rows came from successful Actor run `fNx8cxIyntPOg1IDj`, build `0
 {
   "inputIndex": 0,
   "documentId": "official-valid",
-  "fileName": "official-valid.xml",
+  "fileName": "base-example.xml",
   "processingStatus": "SUCCEEDED",
   "conformanceStatus": "ACCEPTED",
   "previewConformanceStatus": "ACCEPTED",
   "validationScope": "OFFLINE_PREFLIGHT",
+  "externalStateStatus": "NOT_EVALUATED_EXTERNAL_STATE",
   "rulesetEffectiveAt": "2026-02-23",
   "sourceFormat": "XML",
   "validationFamily": "PEPPOL_BIS_BILLING",
@@ -72,7 +74,7 @@ All three JSON rows came from successful Actor run `fNx8cxIyntPOg1IDj`, build `0
       "name": "Peppol BIS Billing 3.0.21",
       "effectiveAt": "2026-08-17"
     },
-    "artifactManifestSha256": "2d149ca9eee33f59e0abaf7be2e5e584272c57f11c80978f2f018c46bf58c967"
+    "artifactManifestSha256": "ce0b34ba52412ea870785a58f316990d578d91717c3b1b396ed0f2e9f3fd5ef2"
   },
   "counts": {
     "fatal": 0,
@@ -93,7 +95,7 @@ All three JSON rows came from successful Actor run `fNx8cxIyntPOg1IDj`, build `0
   "sha256": "1b7cc3ff1834c8963f2c93f30f171b58002cbf0b2c52dc8765e7e83aebb9f7c9",
   "embeddedXmlSha256": null,
   "container": null,
-  "checkedAt": "2026-07-29T10:31:37.589350Z",
+  "checkedAt": "2026-07-29T11:51:09.618197Z",
   "reports": {},
   "error": null
 }
@@ -102,19 +104,20 @@ All three JSON rows came from successful Actor run `fNx8cxIyntPOg1IDj`, build `0
 </details>
 
 <details>
-<summary><strong>02. REJECTED</strong> - exact XSD and business-rule evidence</summary>
+<summary><strong>02. REJECTED</strong> - empty invoice ID fails active and preview business rules</summary>
 
 [`02_live_rejected_output.json`](02_live_rejected_output.json)
 
 ```json
 {
   "inputIndex": 1,
-  "documentId": "malformed-invalid",
-  "fileName": "invalid.xml",
+  "documentId": "mutated-empty-invoice-id",
+  "fileName": "mutated-empty-invoice-id.xml",
   "processingStatus": "SUCCEEDED",
   "conformanceStatus": "REJECTED",
   "previewConformanceStatus": "REJECTED",
   "validationScope": "OFFLINE_PREFLIGHT",
+  "externalStateStatus": "NOT_EVALUATED_EXTERNAL_STATE",
   "rulesetEffectiveAt": "2026-02-23",
   "sourceFormat": "XML",
   "validationFamily": "PEPPOL_BIS_BILLING",
@@ -137,35 +140,16 @@ All three JSON rows came from successful Actor run `fNx8cxIyntPOg1IDj`, build `0
       "name": "Peppol BIS Billing 3.0.21",
       "effectiveAt": "2026-08-17"
     },
-    "artifactManifestSha256": "2d149ca9eee33f59e0abaf7be2e5e584272c57f11c80978f2f018c46bf58c967"
+    "artifactManifestSha256": "ce0b34ba52412ea870785a58f316990d578d91717c3b1b396ed0f2e9f3fd5ef2"
   },
   "counts": {
-    "fatal": 16,
-    "error": 1,
+    "fatal": 2,
+    "error": 0,
     "warning": 0,
     "information": 0
   },
   "findings": [
     {
-      "severity": "ERROR",
-      "stage": "XSD",
-      "ruleId": "SCHEMAV_ELEMENT_CONTENT",
-      "message": "Element '{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}ID': This element is not expected. Expected is one of ( {urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2}UBLExtensions, {urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2}UBLVersionID, {urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2}CustomizationID, {urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2}ProfileID, {urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2}ProfileExecutionID, {urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2}ID ).",
-      "location": "/*/*",
-      "ruleset": "UBL-2.1-XSD",
-      "line": 1,
-      "column": 0
-    },
-    {
-      "severity": "FATAL",
-      "stage": "BUSINESS_RULE",
-      "ruleId": "BR-01",
-      "message": "[BR-01]-An Invoice shall have a Specification identifier (BT-24).",
-      "location": "/*:Invoice[namespace-uri()='urn:oasis:names:specification:ubl:schema:xsd:Invoice-2'][1]",
-      "test": "normalize-space(cbc:CustomizationID) != ''",
-      "ruleset": "EN16931-1.3.15"
-    },
-    {
       "severity": "FATAL",
       "stage": "BUSINESS_RULE",
       "ruleId": "BR-02",
@@ -173,36 +157,26 @@ All three JSON rows came from successful Actor run `fNx8cxIyntPOg1IDj`, build `0
       "location": "/*:Invoice[namespace-uri()='urn:oasis:names:specification:ubl:schema:xsd:Invoice-2'][1]",
       "test": "normalize-space(cbc:ID) != ''",
       "ruleset": "EN16931-1.3.15"
+    },
+    {
+      "severity": "FATAL",
+      "stage": "BUSINESS_RULE",
+      "ruleId": "PEPPOL-EN16931-R008",
+      "message": "Document MUST not contain empty elements.",
+      "location": "/*:Invoice[namespace-uri()='urn:oasis:names:specification:ubl:schema:xsd:Invoice-2'][1]/*:ID[namespace-uri()='urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2'][1]",
+      "test": "false()",
+      "ruleset": "PEPPOL-BIS-3.0.20"
     }
   ],
-  "findingsTruncated": true,
+  "findingsTruncated": false,
   "previewCounts": {
-    "fatal": 16,
-    "error": 1,
+    "fatal": 2,
+    "error": 0,
     "warning": 0,
     "information": 0
   },
   "previewFindings": [
     {
-      "severity": "ERROR",
-      "stage": "XSD",
-      "ruleId": "SCHEMAV_ELEMENT_CONTENT",
-      "message": "Element '{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}ID': This element is not expected. Expected is one of ( {urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2}UBLExtensions, {urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2}UBLVersionID, {urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2}CustomizationID, {urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2}ProfileID, {urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2}ProfileExecutionID, {urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2}ID ).",
-      "location": "/*/*",
-      "ruleset": "UBL-2.1-XSD",
-      "line": 1,
-      "column": 0
-    },
-    {
-      "severity": "FATAL",
-      "stage": "BUSINESS_RULE",
-      "ruleId": "BR-01",
-      "message": "[BR-01]-An Invoice shall have a Specification identifier (BT-24).",
-      "location": "/*:Invoice[namespace-uri()='urn:oasis:names:specification:ubl:schema:xsd:Invoice-2'][1]",
-      "test": "normalize-space(cbc:CustomizationID) != ''",
-      "ruleset": "EN16931-1.3.16-PREVIEW"
-    },
-    {
       "severity": "FATAL",
       "stage": "BUSINESS_RULE",
       "ruleId": "BR-02",
@@ -210,13 +184,22 @@ All three JSON rows came from successful Actor run `fNx8cxIyntPOg1IDj`, build `0
       "location": "/*:Invoice[namespace-uri()='urn:oasis:names:specification:ubl:schema:xsd:Invoice-2'][1]",
       "test": "normalize-space(cbc:ID) != ''",
       "ruleset": "EN16931-1.3.16-PREVIEW"
+    },
+    {
+      "severity": "FATAL",
+      "stage": "BUSINESS_RULE",
+      "ruleId": "PEPPOL-EN16931-R008",
+      "message": "[PEPPOL-EN16931-R008]-Document MUST not contain empty elements.",
+      "location": "/*:Invoice[namespace-uri()='urn:oasis:names:specification:ubl:schema:xsd:Invoice-2'][1]/*:ID[namespace-uri()='urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2'][1]",
+      "test": "false()",
+      "ruleset": "PEPPOL-BIS-3.0.21-PREVIEW"
     }
   ],
-  "previewFindingsTruncated": true,
-  "sha256": "05ff26714881a6b4b30f4399b395ce33ee5fb7d635b7ad1a0d0a1ad54895caf6",
+  "previewFindingsTruncated": false,
+  "sha256": "96c9ed30f12c85489ca66091e8e045cf76cd284970c048b03ce6dd2ed753ba85",
   "embeddedXmlSha256": null,
   "container": null,
-  "checkedAt": "2026-07-29T10:31:59.229960Z",
+  "checkedAt": "2026-07-29T11:52:37.720171Z",
   "reports": {},
   "error": null
 }
@@ -238,6 +221,7 @@ All three JSON rows came from successful Actor run `fNx8cxIyntPOg1IDj`, build `0
   "conformanceStatus": "NOT_EVALUATED",
   "previewConformanceStatus": "NOT_EVALUATED",
   "validationScope": "OFFLINE_PREFLIGHT",
+  "externalStateStatus": "NOT_EVALUATED_EXTERNAL_STATE",
   "rulesetEffectiveAt": "2026-02-23",
   "sourceFormat": "UNKNOWN",
   "validationFamily": "UNKNOWN",
@@ -260,7 +244,7 @@ All three JSON rows came from successful Actor run `fNx8cxIyntPOg1IDj`, build `0
       "name": "Peppol BIS Billing 3.0.21",
       "effectiveAt": "2026-08-17"
     },
-    "artifactManifestSha256": "2d149ca9eee33f59e0abaf7be2e5e584272c57f11c80978f2f018c46bf58c967"
+    "artifactManifestSha256": "ce0b34ba52412ea870785a58f316990d578d91717c3b1b396ed0f2e9f3fd5ef2"
   },
   "counts": {
     "fatal": 0,
@@ -281,7 +265,7 @@ All three JSON rows came from successful Actor run `fNx8cxIyntPOg1IDj`, build `0
   "sha256": null,
   "embeddedXmlSha256": null,
   "container": null,
-  "checkedAt": "2026-07-29T10:31:59.296862Z",
+  "checkedAt": "2026-07-29T11:52:37.783264Z",
   "reports": {},
   "error": {
     "code": "SOURCE_FETCH_FAILED",

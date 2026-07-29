@@ -12,9 +12,9 @@ This is an independent, unofficial product. It is not affiliated with, sponsored
 |---|---|
 | Actor | `kamerozkan/peppol-bis-preflight-validator` |
 | Actor ID | `7hUmsUWO5wpNVeDOz` |
-| Successful run | `fNx8cxIyntPOg1IDj` |
-| Build | `0.0.1`, build ID `nveuIn6Ai1tEFsD2W` |
-| Dataset | `XlAJMsaT0VBsSHHxq`, 3 records |
+| Successful run | `Szb49L6dL3IkFBapm` |
+| Build | `0.0.3`, build ID `RSEHb1OfMZGbVGlsj` |
+| Dataset | `HXEpY6XKMF7SiyYKw`, 3 records |
 | Run time | 2026-07-29 |
 | Charged validation events | 2 |
 
@@ -23,7 +23,7 @@ The run and dataset identifiers are included for owner-side provenance. This rep
 ## Output provenance
 
 - [`01_live_accepted_output.json`](01_live_accepted_output.json) is the verbatim accepted dataset row.
-- [`02_live_rejected_output.json`](02_live_rejected_output.json) is the verbatim rejected dataset row, limited by the run input to three active and three preview findings.
+- [`02_live_rejected_output.json`](02_live_rejected_output.json) is the verbatim rejected dataset row for an empty invoice ID, including active and preview rule evidence.
 - [`03_live_not_evaluated_output.json`](03_live_not_evaluated_output.json) is the verbatim source-policy failure row.
 
 The records were generated from public or synthetic release-test inputs. No omitted value was inferred, reconstructed, or converted into a success claim.

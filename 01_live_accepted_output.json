@@ -1,11 +1,12 @@
 {
   "inputIndex": 0,
   "documentId": "official-valid",
-  "fileName": "official-valid.xml",
+  "fileName": "base-example.xml",
   "processingStatus": "SUCCEEDED",
   "conformanceStatus": "ACCEPTED",
   "previewConformanceStatus": "ACCEPTED",
   "validationScope": "OFFLINE_PREFLIGHT",
+  "externalStateStatus": "NOT_EVALUATED_EXTERNAL_STATE",
   "rulesetEffectiveAt": "2026-02-23",
   "sourceFormat": "XML",
   "validationFamily": "PEPPOL_BIS_BILLING",
@@ -28,7 +29,7 @@
       "name": "Peppol BIS Billing 3.0.21",
       "effectiveAt": "2026-08-17"
     },
-    "artifactManifestSha256": "2d149ca9eee33f59e0abaf7be2e5e584272c57f11c80978f2f018c46bf58c967"
+    "artifactManifestSha256": "ce0b34ba52412ea870785a58f316990d578d91717c3b1b396ed0f2e9f3fd5ef2"
   },
   "counts": {
     "fatal": 0,
@@ -49,7 +50,7 @@
   "sha256": "1b7cc3ff1834c8963f2c93f30f171b58002cbf0b2c52dc8765e7e83aebb9f7c9",
   "embeddedXmlSha256": null,
   "container": null,
-  "checkedAt": "2026-07-29T10:31:37.589350Z",
+  "checkedAt": "2026-07-29T11:51:09.618197Z",
   "reports": {},
   "error": null
 }
