@@ -1,0 +1,58 @@
+{
+  "inputIndex": 2,
+  "documentId": "source-error",
+  "fileName": "blocked.xml",
+  "processingStatus": "FAILED",
+  "conformanceStatus": "NOT_EVALUATED",
+  "previewConformanceStatus": "NOT_EVALUATED",
+  "validationScope": "OFFLINE_PREFLIGHT",
+  "rulesetEffectiveAt": "2026-02-23",
+  "sourceFormat": "UNKNOWN",
+  "validationFamily": "UNKNOWN",
+  "syntax": "UNKNOWN",
+  "profile": "UNKNOWN",
+  "scenario": null,
+  "versions": {
+    "ubl": "2.1",
+    "cenSchematronActive": "1.3.15",
+    "cenSchematronPreview": "1.3.16",
+    "peppolBisActive": "3.0.20",
+    "peppolBisPreview": "3.0.21",
+    "saxonHe": "10.9",
+    "schematronSkeleton": "02f3707b194ce5792bf77b14a66d782c060abba3",
+    "activeRuleset": {
+      "name": "Peppol BIS Billing 3.0.20",
+      "effectiveAt": "2026-02-23"
+    },
+    "previewRuleset": {
+      "name": "Peppol BIS Billing 3.0.21",
+      "effectiveAt": "2026-08-17"
+    },
+    "artifactManifestSha256": "2d149ca9eee33f59e0abaf7be2e5e584272c57f11c80978f2f018c46bf58c967"
+  },
+  "counts": {
+    "fatal": 0,
+    "error": 0,
+    "warning": 0,
+    "information": 0
+  },
+  "findings": [],
+  "findingsTruncated": false,
+  "previewCounts": {
+    "fatal": 0,
+    "error": 0,
+    "warning": 0,
+    "information": 0
+  },
+  "previewFindings": [],
+  "previewFindingsTruncated": false,
+  "sha256": null,
+  "embeddedXmlSha256": null,
+  "container": null,
+  "checkedAt": "2026-07-29T10:31:59.296862Z",
+  "reports": {},
+  "error": {
+    "code": "SOURCE_FETCH_FAILED",
+    "message": "Only HTTPS source URLs are allowed"
+  }
+}

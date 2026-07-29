@@ -1,0 +1,257 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/kamerozkan/peppol-bis-preflight-validator-sample/main/dataset_record.schema.json",
+  "title": "Peppol BIS Billing validation dataset record",
+  "description": "One deterministic Peppol BIS Billing active and preview offline-preflight result.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "inputIndex": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "documentId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "fileName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "processingStatus": {
+      "type": "string",
+      "enum": [
+        "SUCCEEDED",
+        "FAILED"
+      ]
+    },
+    "conformanceStatus": {
+      "type": "string",
+      "enum": [
+        "ACCEPTED",
+        "REJECTED",
+        "NOT_EVALUATED"
+      ]
+    },
+    "previewConformanceStatus": {
+      "type": "string",
+      "enum": [
+        "ACCEPTED",
+        "REJECTED",
+        "NOT_EVALUATED"
+      ]
+    },
+    "validationScope": {
+      "const": "OFFLINE_PREFLIGHT"
+    },
+    "rulesetEffectiveAt": {
+      "type": "string",
+      "format": "date"
+    },
+    "sourceFormat": {
+      "type": "string"
+    },
+    "validationFamily": {
+      "type": "string"
+    },
+    "syntax": {
+      "type": "string"
+    },
+    "profile": {
+      "type": "string"
+    },
+    "scenario": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "versions": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "counts": {
+      "$ref": "#/$defs/counts"
+    },
+    "findings": {
+      "$ref": "#/$defs/findings"
+    },
+    "findingsTruncated": {
+      "type": "boolean"
+    },
+    "previewCounts": {
+      "$ref": "#/$defs/counts"
+    },
+    "previewFindings": {
+      "$ref": "#/$defs/findings"
+    },
+    "previewFindingsTruncated": {
+      "type": "boolean"
+    },
+    "sha256": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "embeddedXmlSha256": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "container": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": true
+    },
+    "checkedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "reports": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "error": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "code": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "code",
+            "message"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "inputIndex",
+    "documentId",
+    "fileName",
+    "processingStatus",
+    "conformanceStatus",
+    "previewConformanceStatus",
+    "validationScope",
+    "rulesetEffectiveAt",
+    "sourceFormat",
+    "validationFamily",
+    "syntax",
+    "profile",
+    "scenario",
+    "versions",
+    "counts",
+    "findings",
+    "findingsTruncated",
+    "previewCounts",
+    "previewFindings",
+    "previewFindingsTruncated",
+    "sha256",
+    "embeddedXmlSha256",
+    "container",
+    "checkedAt",
+    "reports",
+    "error"
+  ],
+  "$defs": {
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "fatal": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "error": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "warning": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "information": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "fatal",
+        "error",
+        "warning",
+        "information"
+      ]
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "severity": {
+            "type": "string",
+            "enum": [
+              "FATAL",
+              "ERROR",
+              "WARNING",
+              "INFORMATION"
+            ]
+          },
+          "stage": {
+            "type": "string"
+          },
+          "ruleId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "location": {
+            "type": "string"
+          },
+          "test": {
+            "type": "string"
+          },
+          "ruleset": {
+            "type": "string"
+          },
+          "line": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "column": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "severity",
+          "message"
+        ]
+      }
+    }
+  }
+}

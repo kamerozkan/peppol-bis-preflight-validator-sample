@@ -1,0 +1,113 @@
+{
+  "inputIndex": 1,
+  "documentId": "malformed-invalid",
+  "fileName": "invalid.xml",
+  "processingStatus": "SUCCEEDED",
+  "conformanceStatus": "REJECTED",
+  "previewConformanceStatus": "REJECTED",
+  "validationScope": "OFFLINE_PREFLIGHT",
+  "rulesetEffectiveAt": "2026-02-23",
+  "sourceFormat": "XML",
+  "validationFamily": "PEPPOL_BIS_BILLING",
+  "syntax": "UBL_INVOICE",
+  "profile": "PEPPOL_BIS_BILLING_3",
+  "scenario": "Peppol BIS Billing 3 UBL Invoice",
+  "versions": {
+    "ubl": "2.1",
+    "cenSchematronActive": "1.3.15",
+    "cenSchematronPreview": "1.3.16",
+    "peppolBisActive": "3.0.20",
+    "peppolBisPreview": "3.0.21",
+    "saxonHe": "10.9",
+    "schematronSkeleton": "02f3707b194ce5792bf77b14a66d782c060abba3",
+    "activeRuleset": {
+      "name": "Peppol BIS Billing 3.0.20",
+      "effectiveAt": "2026-02-23"
+    },
+    "previewRuleset": {
+      "name": "Peppol BIS Billing 3.0.21",
+      "effectiveAt": "2026-08-17"
+    },
+    "artifactManifestSha256": "2d149ca9eee33f59e0abaf7be2e5e584272c57f11c80978f2f018c46bf58c967"
+  },
+  "counts": {
+    "fatal": 16,
+    "error": 1,
+    "warning": 0,
+    "information": 0
+  },
+  "findings": [
+    {
+      "severity": "ERROR",
+      "stage": "XSD",
+      "ruleId": "SCHEMAV_ELEMENT_CONTENT",
+      "message": "Element '{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}ID': This element is not expected. Expected is one of ( {urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2}UBLExtensions, {urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2}UBLVersionID, {urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2}CustomizationID, {urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2}ProfileID, {urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2}ProfileExecutionID, {urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2}ID ).",
+      "location": "/*/*",
+      "ruleset": "UBL-2.1-XSD",
+      "line": 1,
+      "column": 0
+    },
+    {
+      "severity": "FATAL",
+      "stage": "BUSINESS_RULE",
+      "ruleId": "BR-01",
+      "message": "[BR-01]-An Invoice shall have a Specification identifier (BT-24).",
+      "location": "/*:Invoice[namespace-uri()='urn:oasis:names:specification:ubl:schema:xsd:Invoice-2'][1]",
+      "test": "normalize-space(cbc:CustomizationID) != ''",
+      "ruleset": "EN16931-1.3.15"
+    },
+    {
+      "severity": "FATAL",
+      "stage": "BUSINESS_RULE",
+      "ruleId": "BR-02",
+      "message": "[BR-02]-An Invoice shall have an Invoice number (BT-1).",
+      "location": "/*:Invoice[namespace-uri()='urn:oasis:names:specification:ubl:schema:xsd:Invoice-2'][1]",
+      "test": "normalize-space(cbc:ID) != ''",
+      "ruleset": "EN16931-1.3.15"
+    }
+  ],
+  "findingsTruncated": true,
+  "previewCounts": {
+    "fatal": 16,
+    "error": 1,
+    "warning": 0,
+    "information": 0
+  },
+  "previewFindings": [
+    {
+      "severity": "ERROR",
+      "stage": "XSD",
+      "ruleId": "SCHEMAV_ELEMENT_CONTENT",
+      "message": "Element '{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}ID': This element is not expected. Expected is one of ( {urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2}UBLExtensions, {urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2}UBLVersionID, {urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2}CustomizationID, {urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2}ProfileID, {urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2}ProfileExecutionID, {urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2}ID ).",
+      "location": "/*/*",
+      "ruleset": "UBL-2.1-XSD",
+      "line": 1,
+      "column": 0
+    },
+    {
+      "severity": "FATAL",
+      "stage": "BUSINESS_RULE",
+      "ruleId": "BR-01",
+      "message": "[BR-01]-An Invoice shall have a Specification identifier (BT-24).",
+      "location": "/*:Invoice[namespace-uri()='urn:oasis:names:specification:ubl:schema:xsd:Invoice-2'][1]",
+      "test": "normalize-space(cbc:CustomizationID) != ''",
+      "ruleset": "EN16931-1.3.16-PREVIEW"
+    },
+    {
+      "severity": "FATAL",
+      "stage": "BUSINESS_RULE",
+      "ruleId": "BR-02",
+      "message": "[BR-02]-An Invoice shall have an Invoice number (BT-1).",
+      "location": "/*:Invoice[namespace-uri()='urn:oasis:names:specification:ubl:schema:xsd:Invoice-2'][1]",
+      "test": "normalize-space(cbc:ID) != ''",
+      "ruleset": "EN16931-1.3.16-PREVIEW"
+    }
+  ],
+  "previewFindingsTruncated": true,
+  "sha256": "05ff26714881a6b4b30f4399b395ce33ee5fb7d635b7ad1a0d0a1ad54895caf6",
+  "embeddedXmlSha256": null,
+  "container": null,
+  "checkedAt": "2026-07-29T10:31:59.229960Z",
+  "reports": {},
+  "error": null
+}
