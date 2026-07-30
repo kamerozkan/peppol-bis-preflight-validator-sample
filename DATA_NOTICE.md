@@ -14,6 +14,7 @@ This is an independent, unofficial product. It is not affiliated with, sponsored
 | Actor ID | `7hUmsUWO5wpNVeDOz` |
 | Successful run | `Szb49L6dL3IkFBapm` |
 | Build | `0.0.3`, build ID `RSEHb1OfMZGbVGlsj` |
+| Latest hosted build | `0.0.7`, status `SUCCEEDED`, checked 2026-07-30 |
 | Dataset | `HXEpY6XKMF7SiyYKw`, 3 records |
 | Run time | 2026-07-29 |
 | Charged validation events | 2 |
@@ -27,6 +28,14 @@ The run and dataset identifiers are included for owner-side provenance. This rep
 - [`03_live_not_evaluated_output.json`](03_live_not_evaluated_output.json) is the verbatim source-policy failure row.
 
 The records were generated from public or synthetic release-test inputs. No omitted value was inferred, reconstructed, or converted into a success claim.
+
+## Runnable input provenance
+
+- [`01_accepted_input.json`](01_accepted_input.json) references the committed official Peppol BIS Billing `base-example.xml` fixture; SHA-256 `1b7cc3ff1834c8963f2c93f30f171b58002cbf0b2c52dc8765e7e83aebb9f7c9`.
+- [`02_rejected_input.json`](02_rejected_input.json) references the committed deterministic empty-invoice-ID mutation; SHA-256 `96c9ed30f12c85489ca66091e8e045cf76cd284970c048b03ce6dd2ed753ba85`.
+- [`03_not_evaluated_input.json`](03_not_evaluated_input.json) intentionally uses a non-HTTPS URL and demonstrates the documented source-policy rejection.
+
+The evaluated digests match their corresponding real output rows. The official source fixture came from `validator-configuration-bis` release `3.0.20`, archive SHA-256 `a02b0f53638d63224347442d74f340b6a052e08ca32038c34ec6717d197d7780`. The linked input files become runnable from their raw GitHub URLs when this repository refresh is published.
 
 ## Privacy and security
 
