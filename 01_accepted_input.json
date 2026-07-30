@@ -1,0 +1,13 @@
+{
+  "documents": [
+    {
+      "documentId": "official-valid",
+      "fileName": "base-example.xml",
+      "url": "https://raw.githubusercontent.com/kamerozkan/peppol-bis-preflight-validator-sample/main/fixtures/base-example.xml"
+    }
+  ],
+  "resultDetail": "FINDINGS",
+  "maxFindingsPerDocument": 100,
+  "storeXmlReport": false,
+  "storeHtmlReport": false
+}
