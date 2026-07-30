@@ -1,0 +1,13 @@
+{
+  "documents": [
+    {
+      "documentId": "mutated-empty-invoice-id",
+      "fileName": "mutated-empty-invoice-id.xml",
+      "url": "https://raw.githubusercontent.com/kamerozkan/peppol-bis-preflight-validator-sample/main/fixtures/mutated-empty-invoice-id.xml"
+    }
+  ],
+  "resultDetail": "FINDINGS",
+  "maxFindingsPerDocument": 100,
+  "storeXmlReport": false,
+  "storeHtmlReport": false
+}
